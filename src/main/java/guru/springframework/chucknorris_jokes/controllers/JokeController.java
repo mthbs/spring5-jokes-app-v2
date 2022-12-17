@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class JokeController {
 
-    private JokeService jokeService;
+    private final JokeService jokeService;
 
     public JokeController(final JokeService jokeService) {
         this.jokeService = jokeService;
     }
 
-    @RequestMapping("/")
+    @RequestMapping({"/",""})
     public String openRootPage(Model model) {
         model.addAttribute("joke",jokeService.getRandomQuote());
         return "jokes/jokelist";
